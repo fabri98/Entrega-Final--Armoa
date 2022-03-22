@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% block projecto_usuario %}
+
+<h1>Agregar Projecto</h1>
+<br>
+<form action="{% url 'projecto_usuario'%}" method="POST">
+    {% csrf_token %}
+
+   <p>Titulo <input type="text" name="title"></p>
+   <p>Descripcion <textarea name="description" id="" cols="30" rows="10"></textarea></p>
+   <!-- <p>Imagen <input type="file" name="image" id=""></p> -->
+   <p>URL <input type="text" name="url">
+    
+    <p><input type="submit" value="Enviar"></p>
+
+</form>
+<br>
+<h1>Projectos de la comunidad</h1>
+
+    {% for projecto in lista_projecto %}
+    <br>
+    <h2><br> Titulo: {{projecto.title}}</h2>
+    <br>
+    <h2>Descripcion:</h2>
+    <p>{{projecto.description}}</p>
+    <!-- <img src="{{ProjectUser.image}}" alt=""> -->
+    <!-- <a href="{{project.image.url}}">{{projecto.image}}</a> -->
+
+    URL:<a href="{{projecto.url}}">{{projecto.url}}</a>
+    
+    
+
+{% endfor %}
+{% endblock %}

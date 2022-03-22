@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block buscador %}
+<form action="{% url 'blog:busqueda_blog'%}" method="get">
+    {% csrf_token %}
+
+    Buscador <input type="text" name="partial_blog">
+
+    <input type="submit" value="Enviar">
+
+</form>
+
+{% for articulo in blog_buscado %}
+<li>
+    {{articulo}}
+</li>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block form_post %}
+
+
+<form action="{% url 'blog:formulario_post'%}" method="POST">
+    {% csrf_token %}
+
+    Titulo <input type="text" name="title">
+    Descripcion <input type="text" name="description" id="">
+    <!-- imagen <input type="file" name="image" id=""> -->
+    
+    fecha <input type="date" name="date" id="">
+
+    <input type="submit" value="Enviar">
+
+</form>
+{% endblock %}
