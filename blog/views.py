@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post, BusquedaBlog
 
+
 def render_posts(request):
     posts = Post.objects.all()
     return render(request, 'posts.html', {'posts': posts})
@@ -26,3 +27,5 @@ def busqueda_blog(request):
         
     buscador = BusquedaBlog()
     return render(request, 'busqueda_blog.html',{'buscador':buscador, 'blog_buscado': blog_buscado})    
+
+                

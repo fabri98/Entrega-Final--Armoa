@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Project, Comentario , ProjectUser
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, logout, authenticate
 
 def home(request):
     projects = Project.objects.all()
@@ -22,4 +24,32 @@ def projecto_usuario(request):
         nuevo_projecto.save()
         return render(request, 'projecto_usuario.html',{'nuevo_projecto': nuevo_projecto, 'lista_projecto':lista_projecto})
 
-    return render(request, 'projecto_usuario.html',{'nuevo_projecto': nuevo_projecto, 'lista_projecto':lista_projecto})    
+    return render(request, 'projecto_usuario.html',{'nuevo_projecto': nuevo_projecto, 'lista_projecto':lista_projecto})
+
+def login_request(request):
+
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+
+        if form.is_valid():
+            usuario = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            user = authenticate(username=usuario, password=password)
+
+            if user is not None:
+                login(request, user)
+
+                return render(request, 'home.html', {'mensaje': f'Bienvenido {usuario}'})
+            else:
+
+                return render(request, 'home.html', {'mensaje': 'Error, datos incorrectos'})
+        else:
+
+            return render(request, 'home.html', {'mensaje': 'Error, formulario erroneos'})
+    
+    form = AuthenticationForm()
+
+    return render(request, 'login.html', {'form': form})
+
+  

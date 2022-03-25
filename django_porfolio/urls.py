@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from portfolio import views
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +27,8 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('comentario/', views.cargar_comentario, name='comentario'),
     path('usuarios/', views.projecto_usuario, name='projecto_usuario'),
+    path('login/', views.login_request, name="login"),
+    path('logout/', LogoutView.as_view(template_name='home.html'), name="logout"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
