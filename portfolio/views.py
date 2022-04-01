@@ -1,7 +1,11 @@
 from django.shortcuts import render
 from .models import Project, Comentario , ProjectUser
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
+from .forms import UserForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 def home(request):
     projects = Project.objects.all()
@@ -52,4 +56,16 @@ def login_request(request):
 
     return render(request, 'login.html', {'form': form})
 
-  
+def register(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            form.save()
+            return render(request, 'home.html', {'mensaje': f'Se creo el usuario {username}'})
+        else:
+            return render(request, 'register.html', {'form': form})   
+    form = UserForm()
+    return render(request, 'register.html', {'form': form})
+
