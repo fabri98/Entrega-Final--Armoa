@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block register %}
+<form action="" method="post">
+    <h2>Editar user</h2>
+    {% csrf_token %}
+
+    <table>
+
+    {{form.as_p}}
+    </table>
+    <input type="submit" value="Guardar">
+
+</form>
+
+{% endblock %}
