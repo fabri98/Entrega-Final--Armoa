@@ -8,7 +8,55 @@
     <title>Django Portafolio</title>
 </head>
 <body>
-    {% include 'partials/navbar.html' %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">Portafolio</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:posts'%}">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:formulario_post'%}">Crear Post</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:busqueda_blog'%}">Buscar Post</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'projecto_usuario'%}">Projectos de la Comunidad</a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="{% url 'comentario'%}">Comentarios</a>
+              </li> -->
+              {% if request.user.is_authenticated %}
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'edit'%}">
+                    <img src="{{user_avatar}}" alt="Editar imagen" height="30" >
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+                </li>
+                
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login'%}">Login</a>
+              </li>         
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register'%}">Registrar</a>
+              </li>
+              {% endif %}
+              
+                           
+            </ul>
+          </div>
+        </div>
+      </nav>
 
     <div class="container p-4"></div>
         {% block form_post %}
