@@ -4,6 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from .forms import UserForm, EditUser
 from django.contrib.auth.decorators import login_required
 from portfolio.views import buscar_url_avatar
+from .models import UserAvatar
 # Create your views here.
 def login_request(request):
     
@@ -47,8 +48,10 @@ def register(request):
 @login_required
 def edit(request):  
     mensaje = ''
-    if request.method == 'POST':
-        form = EditUser(request.POST)
+
+    user_avatar_logued, _ = UserAvatar.objects.get_or_create(user=request.user)
+    if request.method == 'POST':      
+        form = EditUser(request.POST, request.FILES)
         request.user
 
         if form.is_valid():
@@ -56,12 +59,16 @@ def edit(request):
             request.user.email = data.get('email')
             request.user.first_name = data.get('first_name','')
             request.user.last_name = data.get('last_name','')
+            user_avatar_logued.avatar = data.get('avatar','')
+            user_avatar_logued.link = data.get('link','')
+
 
             if data.get('password1') == data.get('password2') and len(data.get('password1'))>8:
                 request.user.set_password(data.get('password1'))
             else:
                 mensaje = 'No se modifico el password'    
             
+            user_avatar_logued.save()
             request.user.save()
 
             return render(request, 'layout.html', {'mensaje': mensaje, 'user_avatar': buscar_url_avatar(request.user)})
@@ -73,6 +80,8 @@ def edit(request):
             'last_name':request.user.last_name,
             'email':request.user.email,
             'username':request.user.username,
+            'avatar':user_avatar_logued.avatar,
+            'link':user_avatar_logued.link,
         }
     )
     return render(request, 'edit_user.html', {'form': form,'mensaje':'','user_avatar': buscar_url_avatar(request.user)})

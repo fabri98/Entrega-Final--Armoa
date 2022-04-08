@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Avatar, Project, Comentario , ProjectUser
+from accounts.models import UserAvatar
 
 
 
@@ -33,4 +34,4 @@ def projecto_usuario(request):
 
 
 def buscar_url_avatar(user):
-    return Avatar.objects.filter(user=user)[0].imagen.url
+    return UserAvatar.objects.filter(user=user)[0].avatar.url
