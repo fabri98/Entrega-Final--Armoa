@@ -2,14 +2,14 @@
 {% block form_post %}
 
 
-<form action="{% url 'blog:formulario_post'%}" method="POST">
+<form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
-    Titulo <input type="text" name="title">
-    Descripcion <input type="text" name="description" id="">
-    <!-- imagen <input type="file" name="image" id=""> -->
+    <table>
+
+        {{form.as_table}}
     
-    fecha <input type="date" name="date" id="">
+    </table>
 
     <input type="submit" value="Enviar">
 

@@ -35,8 +35,8 @@
               {% if request.user.is_authenticated %}
                 
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'edit'%}">
-                    <img src="{{user_avatar}}" alt="Editar" height="30" >
+                  <a class="nav-link" href="{% url 'profile'%}">
+                    <img src="{{user_avatar}}" alt="Usuario" height="30" >
                   </a>
                 </li>
                 <li class="nav-item">
@@ -79,6 +79,9 @@
 
         {% block register %}
         {% endblock%}
+
+        {% block profile %}
+        {% endblock %}
     </div>
     
 </body>

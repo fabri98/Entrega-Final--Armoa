@@ -86,3 +86,7 @@ def edit(request):
     )
     return render(request, 'edit_user.html', {'form': form,'mensaje':'','user_avatar': buscar_url_avatar(request.user)})
 
+@login_required
+def profile(request):
+    data_user, _= UserAvatar.objects.get_or_create(user=request.user)
+    return render(request, 'profile.html',{'data_user':data_user})

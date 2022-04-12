@@ -2,15 +2,16 @@
 {% block content %}
     <h1>Post</h1>
 
-    {% for post in posts %}
-
+{% for post in posts%}
     <h2>{{post.title}}</h2>
-    <h3>{{post.date}}</h3>
+    <h2>{{post.subtitle}}</h2>
+    <h2> Autor:{{post.author}}</h2>
+    Fecha de creación:<p>{{post.date}}</pS>
 
     <p>{{post.description}}</p>
 
-    <!-- <img src="{{post.image.url}}" alt=""> -->
+    <p><img src="{{datos_post.imagen.url}}" alt="Imagen" height="300"></p>
+{% endfor %}
 
-    {% endfor %}
 
 {% endblock %}
