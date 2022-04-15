@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h1>Post</h1>
+
+
+    <h2>{{post.title}}</h2>
+    <h2>{{post.subtitle}}</h2>
+    <h2> Autor:{{post.author}}</h2>
+    Fecha de creación:<p>{{post.date}}</pS>
+
+    <p>{{post.description | safe}}</p>
+
+    {% if post.imagen %}
+    <p><img src="{{post.imagen.url}}" alt="Imagen" height="300"></p>
+    {% endif %}
+    <p><a href="{% url 'blog:update' post.id%}">Editar articulo</a> | <a href="{% url 'blog:delete' post.id%}">Borrar articulo</a></p>
+    <p></p>
+
+
+{% endblock %}

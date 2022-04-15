@@ -20,7 +20,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
 
-                return render(request, 'layout.html', {'mensaje': f'Bienvenido {usuario}','user_avatar': buscar_url_avatar(request.user)})
+                return render(request, 'layout.html', {'user_avatar': buscar_url_avatar(request.user)})
             else:
 
                 return render(request, 'layout.html', {'mensaje': 'Error, datos incorrectos'})

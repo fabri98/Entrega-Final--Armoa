@@ -1,17 +1,24 @@
 {% extends 'layout.html' %}
 {% block content %}
     <h1>Post</h1>
+<br>
+<h2><a href="{% url 'blog:formulario_post'%}">Crear un articulo</a></h2>   
+<br>
+<br> 
+
+{% if posts %}
 
 {% for post in posts%}
     <h2>{{post.title}}</h2>
     <h2>{{post.subtitle}}</h2>
-    <h2> Autor:{{post.author}}</h2>
-    Fecha de creación:<p>{{post.date}}</pS>
+    Fecha de creación:<p>{{post.date}}</p>
 
-    <p>{{post.description}}</p>
-
-    <p><img src="{{datos_post.imagen.url}}" alt="Imagen" height="300"></p>
+    <p><a href="{% url 'blog:blog_detalle' post.id%}">Leer más..</a>
 {% endfor %}
 
+{% else %}
+<h2>No hay articulos por el momento</h2>
+
+{% endif %}
 
 {% endblock %}

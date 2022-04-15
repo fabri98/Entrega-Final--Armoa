@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block form_post %}
+
+
+<form action="{% url 'blog:update' actualizar_post.id%}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <table>
+
+        {{form.as_table}}
+    
+    </table>
+
+    <input type="submit" value="Actualizar">
+
+</form>
+{% endblock %}

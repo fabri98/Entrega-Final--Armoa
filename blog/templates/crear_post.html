@@ -6,12 +6,12 @@
     {% csrf_token %}
 
     <table>
-
+        {{form.media}}
         {{form.as_table}}
     
     </table>
 
-    <input type="submit" value="Enviar">
+    <input type="submit" value="Crear">
 
 </form>
 {% endblock %}
