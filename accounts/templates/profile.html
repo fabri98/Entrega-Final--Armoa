@@ -6,8 +6,8 @@
 <h5>Usuario: {{request.user.username}}</h5>
 <h5>Nombre: {{request.user.first_name}} {{request.user.last_name}}</h5>
 <h5>Email: {{request.user.email}}</h5>
-<h5>Imagen de Perfil:</h5><img src="{{data_user.avatar.url}}" alt="Imagen de perfil" height="200">
-<h5>Link de mi pagina: {{data_user.link}}</h5>
+<h5>Imagen de Perfil:</h5><img src="{{request.user.useravatar.avatar.url}}" alt="Imagen de perfil" height="200">
+<h5>Link de mi pagina: {{request.user.useravatar.link}}</h5>
 
     <a href={% url 'edit' %}> Editar perfil</a>
 

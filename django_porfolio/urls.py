@@ -28,6 +28,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('comentario/', views.cargar_comentario, name='comentario'),
     path('usuarios/', views.projecto_usuario, name='projecto_usuario'),
+    path('about/',views.about, name='about'),
     
 ]
 

@@ -1,19 +1,16 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <h1>Inicio</h1>
-    <h2>{{mensaje}}</h2>
-
-    {% for project in projects %}
+<main class="px-3">
+    <h1>Página de inicio.</h1>
+    <p class="lead">Bienvenido!!. Este es un blog en el que puedes subir articulos de los temas que quieras y mas te gusten.</p>
     
-    <h3>{{project.title}}</h3>
-    <p>{{project.description}}</p>
-    <img src="{{project.image.url}}" alt="">
+  </main>
 
-    <br>
-    <br>
-    <p> URL: <a href="{{project.url}}">{{project.url}}</a></p>
+  <footer class="mt-auto text-white-50">
+    <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+  </footer>
+</div>
 
-    {% endfor %}
 {% endblock %}
 

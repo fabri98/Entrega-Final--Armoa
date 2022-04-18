@@ -65,7 +65,6 @@ def update(request, id):
             actualizar_post.subtitle = data['subtitle']
             actualizar_post.author = data['author']
             actualizar_post.description = data['description']
-            actualizar_post.date = data['date']
             actualizar_post.imagen = data['imagen']
         
             actualizar_post.save()

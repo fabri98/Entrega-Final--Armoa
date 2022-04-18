@@ -20,7 +20,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
 
-                return render(request, 'layout.html', {'user_avatar': buscar_url_avatar(request.user)})
+                return render(request, 'layout.html', {})
             else:
 
                 return render(request, 'layout.html', {'mensaje': 'Error, datos incorrectos'})
@@ -71,9 +71,9 @@ def edit(request):
             user_avatar_logued.save()
             request.user.save()
 
-            return render(request, 'layout.html', {'mensaje': mensaje, 'user_avatar': buscar_url_avatar(request.user)})
+            return render(request, 'layout.html', {'mensaje': mensaje})
         else:
-            return render(request, 'edit_user.html', {'form': form,'user_avatar': buscar_url_avatar(request.user)})   
+            return render(request, 'edit_user.html', {'form': form})   
     form = EditUser(
         initial={
             'first_name':request.user.first_name,
@@ -84,9 +84,8 @@ def edit(request):
             'link':user_avatar_logued.link,
         }
     )
-    return render(request, 'edit_user.html', {'form': form,'mensaje':'','user_avatar': buscar_url_avatar(request.user)})
+    return render(request, 'edit_user.html', {'form': form,'mensaje':''})
 
 @login_required
 def profile(request):
-    data_user, _= UserAvatar.objects.get_or_create(user=request.user)
-    return render(request, 'profile.html',{'data_user':data_user})
+    return render(request, 'profile.html',{})

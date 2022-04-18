@@ -1,8 +1,8 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <h1>Post</h1>
+    <h1>Artículos:</h1>
 <br>
-<h2><a href="{% url 'blog:formulario_post'%}">Crear un articulo</a></h2>   
+<h3><a href="{% url 'blog:formulario_post'%}">Crear un articulo</a></h3>   
 <br>
 <br> 
 
@@ -17,7 +17,7 @@
 {% endfor %}
 
 {% else %}
-<h2>No hay articulos por el momento</h2>
+<h2>No hay articulos por el momento..</h2>
 
 {% endif %}
 
