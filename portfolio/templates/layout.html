@@ -37,7 +37,15 @@
               </li> -->
               {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'profile'%}"><img src="{{request.user.useravatar.avatar.url}}" alt="{{request.user.username}}" height="30" >
+
+                  
+                  <a class="nav-link" href="{% url 'profile'%}">  
+                    {% if request.user.useravatar.avatar %}                  
+                    <img src="{{request.user.useravatar.avatar.url}}" alt="{{request.user.username}}" height="30">
+
+                    {% else %}
+                    {{request.user.username}}
+                    {% endif %}
                   </a>
                 </li>
                 <li class="nav-item">

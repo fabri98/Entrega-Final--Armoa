@@ -20,13 +20,13 @@ def login_request(request):
             if user is not None:
                 login(request, user)
 
-                return render(request, 'layout.html', {})
+                return render(request, 'home.html', {'mensaje':'Se logeo correctamente!!'})
             else:
 
-                return render(request, 'layout.html', {'mensaje': 'Error, datos incorrectos'})
+                return render(request, 'home.html', {'mensaje': 'Error, datos incorrectos!!'})
         else:
 
-            return render(request, 'layout.html', {'mensaje': 'Error, formulario erroneos'})
+            return render(request, 'home.html', {'mensaje': 'Error, datos incorrectos!!'})
     
     form = AuthenticationForm()
 

@@ -1,7 +1,13 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<main class="px-3">
+
+    {% if mensaje %}
+    
+    <h3>{{mensaje}}</h3>
+      
+    {% else %}
+    <main class="px-3">
     <h1>Página de inicio.</h1>
     <p class="lead">Bienvenido!!. Este es un blog en el que puedes subir articulos de los temas que quieras y mas te gusten.</p>
     
@@ -11,6 +17,7 @@
     <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
   </footer>
 </div>
+{% endif %}
 
 {% endblock %}
 
