@@ -1,11 +1,15 @@
 {% extends 'layout.html' %}
 {% block register %}
 <form action="" method="post">
+    {% if mensaje %}
+    <p>{{mensaje}}</p>
+    {% else %}
+    
     {% csrf_token %}
     {{form.as_p}}
 
     <input type="submit" value="Registrarse">
-
+    {% endif %}
 </form>
 
 {% endblock %}

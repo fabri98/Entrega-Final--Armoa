@@ -16,6 +16,4 @@ class Post(models.Model):
         return f'{self.title} - Fecha: {self.date}'
 
 
-class BusquedaBlog(models.Model):
-    partial_blog= models.CharField(max_length=100)   
     

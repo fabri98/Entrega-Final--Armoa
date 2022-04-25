@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from .forms import UserForm, EditUser
@@ -39,7 +39,7 @@ def register(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             form.save()
-            return render(request, 'layout.html', {'mensaje': f'Se creo el usuario {username}'})
+            return render(request, 'register.html', {'mensaje': f'Se creo el usuario {username}!!'})
         else:
             return render(request, 'register.html', {'form': form})   
     form = UserForm()
@@ -68,10 +68,10 @@ def edit(request):
             else:
                 mensaje = 'No se modifico el password'    
             
-            user_avatar_logued.save()
+            
             request.user.save()
-
-            return render(request, 'layout.html', {'mensaje': mensaje})
+            user_avatar_logued.save()
+            return redirect('/accounts/profile')
         else:
             return render(request, 'edit_user.html', {'form': form})   
     form = EditUser(

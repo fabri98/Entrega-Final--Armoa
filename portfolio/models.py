@@ -9,17 +9,6 @@ class Project(models.Model):
     image = ImageField(upload_to='portfolio/images/')
     url = models.URLField(blank=True)
 
-class Comentario(models.Model):
-    nombre = models.CharField(max_length=30)
-    email = models.EmailField()
-    comentario = models.TextField()
-    date = models.DateField(datetime.date.today)
-
-class ProjectUser(models.Model):
-    title = models.CharField(max_length=30)
-    description = models.CharField(max_length=30)
-    # image = ImageField(upload_to='portfolio/images/')
-    url = models.URLField(blank=True)
 
 class Avatar(models.Model):
     imagen = models.ImageField(upload_to='avatares',null=True, blank=True)
