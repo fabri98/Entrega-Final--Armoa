@@ -2,15 +2,13 @@
 {% block form_post %}
 
 
-<form action="{% url 'blog:update' actualizar_post.id%}" method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-
-    <table>
-        {{form.media}}
-        {{form.as_table}}
     
-    </table>
-
+        {{form.media}}
+        {{form.as_p}}
+    
+    
     <input type="submit" value="Actualizar">
 
 </form>

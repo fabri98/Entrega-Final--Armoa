@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block form_post %}
+
+
+<form  method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <p>Está seguro que desea borrar este articulo?</p>
+
+    <input type="submit" value="Borrar">
+
+</form>
+{% endblock %}
